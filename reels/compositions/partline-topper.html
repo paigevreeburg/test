@@ -265,20 +265,36 @@
         </div>
       </div>
 
-      <!-- Overlay labels, over the footage -->
-      <div id="label-light-petite" class="overlay-label clip" data-start="2.75" data-duration="69" data-track-index="1">
+      <!-- Overlay labels, over the footage. Each label's data-start is delayed
+           until AFTER she has verbally said that product's name (transcript-
+           timed, +buffer), not the moment its demo footage begins:
+             - Lite Petite: she says "our part line light petite" 0.16-3.6s in;
+               label starts 6.65s (title-card offset + transcript end + buffer).
+             - Lite Extended: "the part line light extended" completes 82.6s in;
+               label starts 85.7s. It keeps running through the end of Part A
+               (111.75s) since she's still talking about an already-named
+               product right up to the cut.
+             - Full Petite: never named in the main clip at all (see the
+               cutaway spliced in above); the name is spoken ~10s into that
+               25s cutaway, so the label deliberately does NOT appear for the
+               cutaway's first 10s (111.75-122s) and starts at 122s once the
+               phrase is complete.
+             - Compare: both products in this comparison were already named
+               earlier, so no additional verbal gate applies; it starts at the
+               existing 179.75s content boundary. -->
+      <div id="label-light-petite" class="overlay-label clip" data-start="6.65" data-duration="79.05" data-track-index="1">
         <div class="scrim">
           <div class="underline"></div>
           <div class="headline">Lite Petite</div>
         </div>
       </div>
-      <div id="label-light-extended" class="overlay-label clip" data-start="71.75" data-duration="40" data-track-index="1">
+      <div id="label-light-extended" class="overlay-label clip" data-start="85.7" data-duration="26.05" data-track-index="1">
         <div class="scrim">
           <div class="underline"></div>
           <div class="headline">Lite Extended</div>
         </div>
       </div>
-      <div id="label-full-petite" class="overlay-label clip" data-start="111.75" data-duration="68" data-track-index="1">
+      <div id="label-full-petite" class="overlay-label clip" data-start="122" data-duration="57.75" data-track-index="1">
         <div class="scrim">
           <div class="underline"></div>
           <div class="headline">Full Petite</div>
@@ -329,9 +345,9 @@
 
       // Overlay label enter animations (small rise + fade, global time = each label's data-start)
       const labels = [
-        { id: "#label-light-petite", t: 2.75 },
-        { id: "#label-light-extended", t: 71.75 },
-        { id: "#label-full-petite", t: 111.75 },
+        { id: "#label-light-petite", t: 6.65 },
+        { id: "#label-light-extended", t: 85.7 },
+        { id: "#label-full-petite", t: 122 },
         { id: "#label-compare", t: 179.75 },
       ];
       labels.forEach(({ id, t }) => {
