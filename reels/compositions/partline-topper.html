@@ -169,7 +169,7 @@
       id="root"
       data-composition-id="partline-topper"
       data-start="0"
-      data-duration="186.75"
+      data-duration="211.75"
       data-width="1080"
       data-height="1920"
     >
@@ -181,25 +181,84 @@
         </div>
       </section>
 
-      <!-- Footage stage: 2.75 - 186.75s (full 184s source clip) -->
+      <!-- Footage stage: a plain (untimed) full-bleed container. Three back-to-back
+           video pairs (bg blur + fg contain), each a timed clip in its own right:
+           the source clip's first 109s (Lite Petite + Lite Extended, unchanged),
+           a 25s cutaway from a different part of the source webinar where she
+           verbally names "part line full petite" (the demo footage that follows
+           never says the product name out loud), then the source clip's
+           remaining 75s (Full Petite demo + the closing comparison). -->
       <div class="stage">
+        <!-- Part A: source 0s-109s -->
         <video
-          id="bg-video"
+          id="bg-video-a"
           class="bg-video"
           src="assets/video/partline-topper.mp4"
           data-start="2.75"
-          data-duration="184"
+          data-media-start="0"
+          data-duration="109"
           data-layout-allow-overflow
           muted
           playsinline
         ></video>
         <div class="fg-frame">
           <video
-            id="fg-video"
+            id="fg-video-a"
             class="fg-video"
             src="assets/video/partline-topper.mp4"
             data-start="2.75"
-            data-duration="184"
+            data-media-start="0"
+            data-duration="109"
+            muted
+            playsinline
+          ></video>
+        </div>
+
+        <!-- Cutaway: "the last one is going to be our part line full petite" -->
+        <video
+          id="bg-video-cutaway"
+          class="bg-video"
+          src="assets/video/full-petite-intro.mp4"
+          data-start="111.75"
+          data-media-start="0"
+          data-duration="25"
+          data-layout-allow-overflow
+          muted
+          playsinline
+        ></video>
+        <div class="fg-frame">
+          <video
+            id="fg-video-cutaway"
+            class="fg-video"
+            src="assets/video/full-petite-intro.mp4"
+            data-start="111.75"
+            data-media-start="0"
+            data-duration="25"
+            muted
+            playsinline
+          ></video>
+        </div>
+
+        <!-- Part B: source 109s-184s (Full Petite demo + closing comparison) -->
+        <video
+          id="bg-video-b"
+          class="bg-video"
+          src="assets/video/partline-topper.mp4"
+          data-start="136.75"
+          data-media-start="109"
+          data-duration="75"
+          data-layout-allow-overflow
+          muted
+          playsinline
+        ></video>
+        <div class="fg-frame">
+          <video
+            id="fg-video-b"
+            class="fg-video"
+            src="assets/video/partline-topper.mp4"
+            data-start="136.75"
+            data-media-start="109"
+            data-duration="75"
             muted
             playsinline
           ></video>
@@ -219,25 +278,44 @@
           <div class="headline">Lite Extended</div>
         </div>
       </div>
-      <div id="label-full-petite" class="overlay-label clip" data-start="111.75" data-duration="43" data-track-index="1">
+      <div id="label-full-petite" class="overlay-label clip" data-start="111.75" data-duration="68" data-track-index="1">
         <div class="scrim">
           <div class="underline"></div>
           <div class="headline">Full Petite</div>
         </div>
       </div>
-      <div id="label-compare" class="overlay-label clip" data-start="154.75" data-duration="32" data-track-index="1">
+      <div id="label-compare" class="overlay-label clip" data-start="179.75" data-duration="32" data-track-index="1">
         <div class="scrim">
           <div class="underline"></div>
           <div class="headline">Lite Petite vs. Lite Extended</div>
         </div>
       </div>
 
-      <!-- Audio: original room sound, starts once the footage begins -->
+      <!-- Audio: original room sound, split to match the three-part footage above -->
       <audio
-        id="source-audio"
+        id="source-audio-a"
         src="assets/video/partline-topper.mp4"
         data-start="2.75"
-        data-duration="184"
+        data-media-start="0"
+        data-duration="109"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+      <audio
+        id="cutaway-audio"
+        src="assets/video/full-petite-intro.mp4"
+        data-start="111.75"
+        data-media-start="0"
+        data-duration="25"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+      <audio
+        id="source-audio-b"
+        src="assets/video/partline-topper.mp4"
+        data-start="136.75"
+        data-media-start="109"
+        data-duration="75"
         data-track-index="10"
         data-volume="1"
       ></audio>
@@ -254,7 +332,7 @@
         { id: "#label-light-petite", t: 2.75 },
         { id: "#label-light-extended", t: 71.75 },
         { id: "#label-full-petite", t: 111.75 },
-        { id: "#label-compare", t: 154.75 },
+        { id: "#label-compare", t: 179.75 },
       ];
       labels.forEach(({ id, t }) => {
         tl.fromTo(
