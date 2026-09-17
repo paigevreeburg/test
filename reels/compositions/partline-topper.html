@@ -169,7 +169,7 @@
       id="root"
       data-composition-id="partline-topper"
       data-start="0"
-      data-duration="211.75"
+      data-duration="186.75"
       data-width="1080"
       data-height="1920"
     >
@@ -181,88 +181,26 @@
         </div>
       </section>
 
-      <!-- Footage stage: a plain (untimed) full-bleed container. Three back-to-back
-           video pairs (bg blur + fg contain), each a timed clip in its own right:
-           the source clip's first 141s (Lite Petite AND the full Lite Extended
-           application — her Lite Extended demo runs much longer than the
-           original 1:49 boundary assumed, all the way to 2:21 where she picks
-           up a new piece and says "and then with this one"), a 25s cutaway
-           from a different part of the source webinar where she verbally names
-           "part line full petite" (this clip never says the product name out
-           loud on its own), then the source clip's remaining 43s (the actual
-           Full Petite demo, identifiable by her noting its clips run "straight
-           back" instead of sideways, plus the closing comparison). -->
+      <!-- Footage stage: 2.75 - 186.75s. The original 184s source clip plays in
+           full and uncut, exactly as uploaded — no spliced-in cutaway. -->
       <div class="stage">
-        <!-- Part A: source 0s-141s -->
         <video
-          id="bg-video-a"
+          id="bg-video"
           class="bg-video"
           src="assets/video/partline-topper.mp4"
           data-start="2.75"
-          data-media-start="0"
-          data-duration="141"
+          data-duration="184"
           data-layout-allow-overflow
           muted
           playsinline
         ></video>
         <div class="fg-frame">
           <video
-            id="fg-video-a"
+            id="fg-video"
             class="fg-video"
             src="assets/video/partline-topper.mp4"
             data-start="2.75"
-            data-media-start="0"
-            data-duration="141"
-            muted
-            playsinline
-          ></video>
-        </div>
-
-        <!-- Cutaway: "the last one is going to be our part line full petite" -->
-        <video
-          id="bg-video-cutaway"
-          class="bg-video"
-          src="assets/video/full-petite-intro.mp4"
-          data-start="143.75"
-          data-media-start="0"
-          data-duration="25"
-          data-layout-allow-overflow
-          muted
-          playsinline
-        ></video>
-        <div class="fg-frame">
-          <video
-            id="fg-video-cutaway"
-            class="fg-video"
-            src="assets/video/full-petite-intro.mp4"
-            data-start="143.75"
-            data-media-start="0"
-            data-duration="25"
-            muted
-            playsinline
-          ></video>
-        </div>
-
-        <!-- Part B: source 141s-184s (the actual Full Petite demo + closing comparison) -->
-        <video
-          id="bg-video-b"
-          class="bg-video"
-          src="assets/video/partline-topper.mp4"
-          data-start="168.75"
-          data-media-start="141"
-          data-duration="43"
-          data-layout-allow-overflow
-          muted
-          playsinline
-        ></video>
-        <div class="fg-frame">
-          <video
-            id="fg-video-b"
-            class="fg-video"
-            src="assets/video/partline-topper.mp4"
-            data-start="168.75"
-            data-media-start="141"
-            data-duration="43"
+            data-duration="184"
             muted
             playsinline
           ></video>
@@ -270,74 +208,51 @@
       </div>
 
       <!-- Overlay labels, over the footage. Each label's data-start is delayed
-           until AFTER she has verbally said that product's name (transcript-
+           until AFTER she has verbally referenced that product (transcript-
            timed, +buffer), not the moment its demo footage begins:
-             - Lite Petite: she says "our part line light petite" 0.16-3.6s in;
+             - Lite Petite: "our part line light petite" completes 3.6s in;
                label starts 6.65s (title-card offset + transcript end + buffer).
              - Lite Extended: "the part line light extended" completes 82.6s in;
-               label starts 85.7s and keeps running through her entire Lite
-               Extended application (which runs all the way to 2:21 in the
-               source clip, composition time 143.75s) since she's still
-               talking about an already-named product right up to the cut.
-             - Full Petite: never named in the main clip at all (see the
-               cutaway spliced in above, now placed at the real 2:21 boundary
-               where she picks up the new piece); the name is spoken ~10s into
-               that 25s cutaway, so the label deliberately does NOT appear for
-               the cutaway's first 10s (143.75-153.75s) and starts at 153.75s
-               once the phrase is complete.
-             - Compare: both products in this comparison were already named
-               earlier, so no additional verbal gate applies; it starts at the
-               existing 179.75s content boundary. -->
+               label starts 85.7s and runs through her entire application of
+               it, which continues all the way to 2:21 in the source clip.
+             - Full Petite: she never says this name in this clip — at 2:21.275
+               she picks up the next piece and says "and then with this one,
+               we are going to place" (confirmed as the Full Petite piece by
+               her noting a few seconds later that its clips run "straight
+               back" instead of sideways, matching Full Petite's construction
+               described elsewhere). Label starts once that reference
+               completes, 145.955s in + buffer -> composition 149s, and runs
+               to the end of the video: the original brief's separate
+               "compare" section (2:32-3:04) doesn't actually show a two-
+               topper side-by-side shot anywhere in this clip on inspection
+               (frame-checked end to end) -- it's continued Full Petite
+               application and brushing throughout, so there is no second
+               label to gate on a verbal or visual cue here. -->
       <div id="label-light-petite" class="overlay-label clip" data-start="6.65" data-duration="79.05" data-track-index="1">
         <div class="scrim">
           <div class="underline"></div>
           <div class="headline">Lite Petite</div>
         </div>
       </div>
-      <div id="label-light-extended" class="overlay-label clip" data-start="85.7" data-duration="58.05" data-track-index="1">
+      <div id="label-light-extended" class="overlay-label clip" data-start="85.7" data-duration="63.3" data-track-index="1">
         <div class="scrim">
           <div class="underline"></div>
           <div class="headline">Lite Extended</div>
         </div>
       </div>
-      <div id="label-full-petite" class="overlay-label clip" data-start="153.75" data-duration="26" data-track-index="1">
+      <div id="label-full-petite" class="overlay-label clip" data-start="149" data-duration="37.75" data-track-index="1">
         <div class="scrim">
           <div class="underline"></div>
           <div class="headline">Full Petite</div>
         </div>
       </div>
-      <div id="label-compare" class="overlay-label clip" data-start="179.75" data-duration="32" data-track-index="1">
-        <div class="scrim">
-          <div class="underline"></div>
-          <div class="headline">Lite Petite vs. Lite Extended</div>
-        </div>
-      </div>
 
-      <!-- Audio: original room sound, split to match the three-part footage above -->
+      <!-- Audio: original room sound, starts once the footage begins -->
       <audio
-        id="source-audio-a"
+        id="source-audio"
         src="assets/video/partline-topper.mp4"
         data-start="2.75"
-        data-media-start="0"
-        data-duration="141"
-        data-track-index="10"
-        data-volume="1"
-      ></audio>
-      <audio
-        id="cutaway-audio"
-        src="assets/video/full-petite-intro.mp4"
-        data-start="143.75"
-        data-media-start="0"
-        data-duration="25"
-        data-track-index="10"
-        data-volume="1"
-      ></audio>
-      <audio
-        id="source-audio-b"
-        src="assets/video/partline-topper.mp4"
-        data-start="168.75"
-        data-media-start="141"
-        data-duration="43"
+        data-duration="184"
         data-track-index="10"
         data-volume="1"
       ></audio>
@@ -353,8 +268,7 @@
       const labels = [
         { id: "#label-light-petite", t: 6.65 },
         { id: "#label-light-extended", t: 85.7 },
-        { id: "#label-full-petite", t: 153.75 },
-        { id: "#label-compare", t: 179.75 },
+        { id: "#label-full-petite", t: 149 },
       ];
       labels.forEach(({ id, t }) => {
         tl.fromTo(
